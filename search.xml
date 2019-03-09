@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[个人作品]]></title>
-    <url>%2Flibilin2018%2F2019%2F03%2F09%2Fblog-02%2F</url>
-    <content type="text"><![CDATA[我从大一开始就喜欢折腾一些软件或者有关页面设计的东西，看到网上别人做的海报很酷炫，所以自学了PPT、PS,做了一些简单的海报（可能不算是是海报，自己瞎折腾），感觉自己还是少了一些审美，后来入坑前端开发，所以就没怎么学了，基本操作还记得一些；在前端学习的过程中，自己也动手做了几个小项目，内容比较简单，以后会继续学习做一些比较复杂的项目，记录在这里。 网页小米9宣传网页 最近小米9手机发布，感觉还不错，想买但没钱，所以就做了这个页面。。技术栈：原生js | PC端 | 不适配移动端传送门 页面展示： 美图屋 在线美图网站，多种壁纸分类，支持多种图片尺寸下载图片来源：360壁纸 必应每日壁纸技术栈：jQuery | PC端 | 移动端传送门 页面展示： 小程序微生活Lite 之前小程序很火，感觉开发起来也比较方便，所以就借了本书学习开发小程序，做出了这个小程序功能：微豆瓣 | 微天气 | 微相册技术栈：小程序 | 云开发 扫码体验： 海报 学习一段时间PPT和PS，做的一些”海报”]]></content>
-      <tags>
-        <tag>个人</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[小白的第一篇博客]]></title>
-    <url>%2Flibilin2018%2F2019%2F03%2F09%2Fblog-01%2F</url>
+    <url>%2F2019%2F03%2F09%2Fblog-01%2F</url>
     <content type="text"><![CDATA[折腾了几天，终于把博客弄好了，从大二暑假开始入坑前端开发，一直想做一个属于自己的博客网站，主要是用来记录学习过程中遇到的技术难题和踩过的坑，同时还可以记录自己的成长经历，以后看看也许有所感触吧。万事开头难，现在总算迈出第一步，希望以后能坚持写博客。 博客的搭建本来想自己动手开发一个博客，但最近有点忙，加上想找一份实习，要去准备。所以就用了hexo + github pages搭建了这个博客，搭建过程中也踩了不少坑，网上有很多搭建过程文章，但是不够详细或者有错误，等有时间我再总结一下搭建过程。 未来打算 及时总结，随时记录理解（之前学习过程中，没有注重总结，有些知识学了不久就忘） 写有深度的博客，做一些优秀项目（这点有待努力，感觉自己还是前端小白，要多学习多总结） 找一份实习（毕竟自己自学缺少一些方向和实践） 持续不断地学习，近期打算深度学习Vue开发一个项目]]></content>
       <tags>
         <tag>个人</tag>
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[个人作品]]></title>
+    <url>%2F2019%2F03%2F09%2Fblog-02%2F</url>
+    <content type="text"><![CDATA[我从大一开始就喜欢折腾一些软件或者有关页面设计的东西，看到网上别人做的海报很酷炫，所以自学了PPT、PS,做了一些简单的海报（可能不算是是海报，自己瞎折腾），感觉自己还是少了一些审美，后来入坑前端开发，所以就没怎么学了，基本操作还记得一些；在前端学习的过程中，自己也动手做了几个小项目，内容比较简单，以后会继续学习做一些比较复杂的项目，记录在这里。 网页小米9宣传网页 最近小米9手机发布，感觉还不错，想买但没钱，所以就做了这个页面。。技术栈：原生js | PC端 | 不适配移动端传送门 页面展示： 美图屋 在线美图网站，多种壁纸分类，支持多种图片尺寸下载图片来源：360壁纸 必应每日壁纸技术栈：jQuery | PC端 | 移动端传送门 页面展示： 小程序微生活Lite 之前小程序很火，感觉开发起来也比较方便，所以就借了本书学习开发小程序，做出了这个小程序功能：微豆瓣 | 微天气 | 微相册技术栈：小程序 | 云开发 扫码体验： 海报 学习一段时间PPT和PS，做的一些”海报”]]></content>
+      <tags>
+        <tag>个人</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
-    <url>%2Flibilin2018%2F2019%2F03%2F08%2Fhello-world%2F</url>
+    <url>%2F2019%2F03%2F08%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>
