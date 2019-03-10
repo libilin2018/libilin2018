@@ -235,6 +235,7 @@
     $.ajax({
       url: "http://project.sharelab.club:163/user/record?uid=567470691&type=1",
       type: "GET",
+      dataType:'jsonp',
       success: function (res) {
         if (res.code === 200) {
           res = res.weekData;
@@ -302,6 +303,7 @@
     $.ajax({
       url: 'http://project.sharelab.club:163/song/url?id=' +  musicIds,
       type: "GET",
+      dataType:'jsonp',
       success: function(res) {
         res = res.data;
         for(var i=0; i<res.length; i++) {
