@@ -161,30 +161,28 @@
 }(jQuery);
 
 
-
 (function () {
-  var defaultAllMusic = [{name: "天龙八部之宿敌 - 许嵩", id: 167691, pic: "http://p3.music.126.net/YxKEZCPUWrvvZf6qeV2_xg==/78065325577755.jpg"},
-                        {name: "学不会 - 林俊杰", id: 108134, pic: "http://p3.music.126.net/nQUhiSnK620HHLbZwnrJ3g==/109951163298363015.jpg"},
-                        {name: "老古董 - 许嵩", id: 557584658, pic: "http://p4.music.126.net/BUFZLieG5a6E3ZVpkHP6fA==/109951163402069754.jpg"},
-                        {name: "千禧 - 徐秉龙", id: 522510615, pic: "http://p4.music.126.net/_sblL2ZjBOtwLAL-3i01Fw==/109951163078474921.jpg"},
-                        {name: "笔记 - 周笔畅", id: 350909, pic: "http://p3.music.126.net/9WvlVAqDesQshpIuZ_Knew==/112150186046307.jpg"},
-                        {name: "如果有来生 - 谭维维", id: 293948, pic: "http://p4.music.126.net/V1oiaFl104PH0yuHLCKVuQ==/109951163061827624.jpg"},
-                        {name: "放过 - 崔天琪", id: 28427066, pic: "http://p4.music.126.net/xuSlE4GEjC4Wve07RvDyFA==/5774635069275057.jpg"},
-                        {name: "别咬我 - 许嵩", id: 28029855, pic: "http://p3.music.126.net/qICXvQmNbxwpKjmKZN2N-Q==/3274345629217532.jpg"},
-                        {name: "星座书上 - 许嵩", id: 167894, pic: "http://p4.music.126.net/Md3RLH0fe2a_3dMDnfqoQg==/18590542604286213.jpg"},
-                        {name: "叹服 - 许嵩", id: 167841, pic: "http://p3.music.126.net/3hqcQrXZ39kDCCzV7QbZjA==/34084860473122.jpg"}];
-  var defaultIds = [167691, 108134, 557584658, 522510615, 350909, 293948, 28427066, 28029855, 167894, 167841];
-
+ 
+ // 音乐播放器局部变量
   var allMusic = [],
       musicLis = [],
       ifPlay = false,
       ids = [],
       currentPlay = 0,
       ramdomCount = 0;
+
+  // 
   getMusicData();
 
 
   function spyClick() {
+
+    $("audio").bind('ended', function() {
+      console.log('end');
+      this.load();
+      $(".my-music_list-current").css("visibility", "hidden");
+      $(".music-player-control").css('background', "url(/play.png) 0% 0% / cover");
+    })
 
     // 监听刷新点击
     $(".reflash-music").click(function () {
@@ -212,10 +210,13 @@
       playMusic();
 
     })
+
   }
 
   function playMusic() {
+
     var audio= $("audio")[0];
+    console.log(audio.ended);
     if (audio.paused) {
       $(".music-player-control").css('background', "url(/load.png) 0% 0% / cover");
       audio.play();
@@ -257,17 +258,9 @@
           showRamdomData();
         }
       }
+
     })
   }
-
-  // function getRamdomMusic() {
-
-  //   music = [], ids = [], musicLis = [];
-  //   $(".my-music_list li").remove();
-
-    
-  //   showData();
-  // }
 
   function showRamdomData() {
 
@@ -315,7 +308,6 @@
     })
     spyClick();
   }
-
 
   function resetList(arr, target) {
     // console.log(arr, target)

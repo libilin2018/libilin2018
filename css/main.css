@@ -1808,7 +1808,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b9b944;
+  background: #ffd14a;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3034,12 +3034,16 @@ blockquote {
   position: relative;
 }
 .my-music_list li {
+  max-width: 170px;
   list-style: none;
   height: 20px;
   line-height: 20px;
   font-size: 13px;
   padding-left: 10px;
   cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .current-play {
   color: #69bce1;
