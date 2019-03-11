@@ -94,23 +94,23 @@
 
 
 
-<meta name="description" content="我之前打算用Vue框架来写一个网易云音乐webApp，但感觉自己功底不够，等修炼多一段时间在尝试写。现在有了这个个人博客，所以就写了一个简单的音乐播放器，放在博客侧边栏，歌曲数据是我网易云音乐最近播放记录，下面是搭建过程。">
+<meta name="description" content="我之前打算用Vue框架来写一个网易云音乐webApp，但感觉自己功底不够，等修炼多一段时间在尝试写。现在有了这个个人博客，所以就写了一个简单的音乐播放器插件，放在博客侧边栏，歌曲数据是我网易云音乐最近播放记录，下面是搭建过程。">
 <meta name="keywords" content="优化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="博客优化--添加个人音乐播放器">
 <meta property="og:url" content="https://blog.sharelab.club/2019/03/11/blog-07/index.html">
 <meta property="og:site_name" content="南山忆">
-<meta property="og:description" content="我之前打算用Vue框架来写一个网易云音乐webApp，但感觉自己功底不够，等修炼多一段时间在尝试写。现在有了这个个人博客，所以就写了一个简单的音乐播放器，放在博客侧边栏，歌曲数据是我网易云音乐最近播放记录，下面是搭建过程。">
+<meta property="og:description" content="我之前打算用Vue框架来写一个网易云音乐webApp，但感觉自己功底不够，等修炼多一段时间在尝试写。现在有了这个个人博客，所以就写了一个简单的音乐播放器插件，放在博客侧边栏，歌曲数据是我网易云音乐最近播放记录，下面是搭建过程。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://m.sharelab.club/gif/music-01.gif">
 <meta property="og:image" content="http://m.sharelab.club/music-02.png">
 <meta property="og:image" content="https://blog.sharelab.club/upload/step-01.png">
 <meta property="og:image" content="https://blog.sharelab.club/upload/step-02.png">
 <meta property="og:image" content="https://blog.sharelab.club/upload/step-03.png">
-<meta property="og:updated_time" content="2019-03-11T09:03:58.607Z">
+<meta property="og:updated_time" content="2019-03-11T13:56:18.258Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="博客优化--添加个人音乐播放器">
-<meta name="twitter:description" content="我之前打算用Vue框架来写一个网易云音乐webApp，但感觉自己功底不够，等修炼多一段时间在尝试写。现在有了这个个人博客，所以就写了一个简单的音乐播放器，放在博客侧边栏，歌曲数据是我网易云音乐最近播放记录，下面是搭建过程。">
+<meta name="twitter:description" content="我之前打算用Vue框架来写一个网易云音乐webApp，但感觉自己功底不够，等修炼多一段时间在尝试写。现在有了这个个人博客，所以就写了一个简单的音乐播放器插件，放在博客侧边栏，歌曲数据是我网易云音乐最近播放记录，下面是搭建过程。">
 <meta name="twitter:image" content="http://m.sharelab.club/gif/music-01.gif">
 
 
@@ -379,16 +379,16 @@
       
 
       
-        <p>我之前打算用Vue框架来写一个网易云音乐webApp，但感觉自己功底不够，等修炼多一段时间在尝试写。现在有了这个个人博客，所以就写了一个简单的音乐播放器，放在博客侧边栏，歌曲数据是我网易云音乐最近播放记录，下面是搭建过程。</p>
+        <p>我之前打算用Vue框架来写一个网易云音乐webApp，但感觉自己功底不够，等修炼多一段时间在尝试写。现在有了这个个人博客，所以就写了一个简单的音乐播放器插件，放在博客侧边栏，歌曲数据是我网易云音乐最近播放记录，下面是搭建过程。</p>
 <a id="more"></a>
 <h2 id="先上效果图"><a href="#先上效果图" class="headerlink" title="先上效果图"></a>先上效果图</h2><p><img src="http://m.sharelab.club/gif/music-01.gif" alt="gif动图" title="效果图"></p>
 <p>侧边栏空间有限，一次只显示四首歌曲，点击刷新可随机显示4四首最近播放记录的音乐。</p>
 <blockquote>
-<p>注意：移动端展示无法显示播放器</p>
+<p>注意：移动端暂时无法显示播放器；需使用HTTP协议访问本站</p>
 </blockquote>
 <h2 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h2><p>虽然可以直接在博客上面添加网易云音乐站外播放外链，但是只能播放一首歌曲，而且不能用js操控播放；</p>
 <p><img src="http://m.sharelab.club/music-02.png" alt="gif动图" title="效果图"></p>
-<p>所以就放弃这种方案，直接自己动手搭建。</p>
+<p>所以就放弃这种方案，直接自己动手搭建一个音乐播放插件，可以在其他地方直接调用。</p>
 <blockquote>
 <p>技术栈： </p>
 </blockquote>
@@ -416,6 +416,10 @@
 <p>js 逻辑代码如下:</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//使用立即执行函数，可防止音乐播放器的变量及函数名污染全局变量</span><br><span class="line">(function () &#123;</span><br><span class="line"> </span><br><span class="line"> // 音乐播放器局部变量</span><br><span class="line">  var allMusic = [],</span><br><span class="line">      musicLis = [],</span><br><span class="line">      ifPlay = false,</span><br><span class="line">      ids = [],</span><br><span class="line">      currentPlay = 0,</span><br><span class="line">      ramdomCount = 0;</span><br><span class="line"></span><br><span class="line">  getMusicData();</span><br><span class="line"></span><br><span class="line">  // 监听点击</span><br><span class="line">  function spyClick() &#123;</span><br><span class="line">  	...</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 播放音乐</span><br><span class="line">  function playMusic() &#123;</span><br><span class="line">	...</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 获取数据</span><br><span class="line">  function getMusicData() &#123;</span><br><span class="line">	...</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  // 随机显示四首播放音乐</span><br><span class="line">  function showRamdomData() &#123;</span><br><span class="line">	...</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 处理根据多个音乐id获取的音乐url数据顺序不一样的问题</span><br><span class="line">  function resetList(arr, target) &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;)($)</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>做完这个音乐播放器感觉有了一些经验了，等有时间尝试做一个网易云音乐webApp。</li>
+<li>待解决：目前只能通过HTTP协议访问本博客才能获取音乐数据，HTTPS访问会有跨域请求问题，计划使用jQuery的jsonp请求回调解决这个问题。</li>
+</ul>
 
       
     </div>
@@ -613,7 +617,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#先上效果图"><span class="nav-number">1.</span> <span class="nav-text">先上效果图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前记"><span class="nav-number">2.</span> <span class="nav-text">前记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启后台服务器"><span class="nav-number">3.</span> <span class="nav-text">开启后台服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑静态页面及用js获取数据显示"><span class="nav-number">4.</span> <span class="nav-text">编辑静态页面及用js获取数据显示</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#先上效果图"><span class="nav-number">1.</span> <span class="nav-text">先上效果图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前记"><span class="nav-number">2.</span> <span class="nav-text">前记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启后台服务器"><span class="nav-number">3.</span> <span class="nav-text">开启后台服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑静态页面及用js获取数据显示"><span class="nav-number">4.</span> <span class="nav-text">编辑静态页面及用js获取数据显示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
