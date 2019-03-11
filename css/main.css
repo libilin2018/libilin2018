@@ -1808,7 +1808,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffd14a;
+  background: #d0b18a;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3067,15 +3067,15 @@ blockquote {
   margin-left: 2px;
 }
 .preloader_1-m1 {
-  animation: living 0.8s linear infinite backwards normal;
+  animation: living 0.8s linear infinite;
   animation-delay: -1.1s;
 }
 .preloader_1-m2 {
-  animation: living 0.8s linear infinite backwards normal;
+  animation: living 0.8s linear infinite;
   animation-delay: -1.3s;
 }
 .preloader_1-m3 {
-  animation: living 0.8s linear infinite backwards normal;
+  animation: living 0.8s linear infinite;
   animation-delay: -1.6s;
 }
 .hr {

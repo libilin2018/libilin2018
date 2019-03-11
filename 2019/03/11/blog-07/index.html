@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://blog.sharelab.club/upload/step-01.png">
 <meta property="og:image" content="https://blog.sharelab.club/upload/step-02.png">
 <meta property="og:image" content="https://blog.sharelab.club/upload/step-03.png">
-<meta property="og:updated_time" content="2019-03-10T14:04:48.138Z">
+<meta property="og:updated_time" content="2019-03-11T09:03:58.607Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="博客优化--添加个人音乐播放器">
 <meta name="twitter:description" content="我之前打算用Vue框架来写一个网易云音乐webApp，但感觉自己功底不够，等修炼多一段时间在尝试写。现在有了这个个人博客，所以就写了一个简单的音乐播放器，放在博客侧边栏，歌曲数据是我网易云音乐最近播放记录，下面是搭建过程。">
@@ -388,10 +388,34 @@
 </blockquote>
 <h2 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h2><p>虽然可以直接在博客上面添加网易云音乐站外播放外链，但是只能播放一首歌曲，而且不能用js操控播放；</p>
 <p><img src="http://m.sharelab.club/music-02.png" alt="gif动图" title="效果图"></p>
-<p>没有自己的个性，所以就放弃这种方案，直接自己动手搭建。</p>
+<p>所以就放弃这种方案，直接自己动手搭建。</p>
+<blockquote>
+<p>技术栈： </p>
+</blockquote>
+<ul>
+<li>HTML5 (使用HTML5标签 data- 属性绑定数据)</li>
+<li>CSS3  (使用CSS3做音乐播放动画)</li>
+<li>jQuery</li>
+</ul>
 <h2 id="开启后台服务器"><a href="#开启后台服务器" class="headerlink" title="开启后台服务器"></a>开启后台服务器</h2><p>网易云接口是使用github上的一个<a href="https://github.com/Binaryify/NeteaseCloudMusicApi" target="_blank" rel="noopener">NodeJs API</a>，用git将仓库代码下载到本地服务器上，在git bash使用命令<br><code>node app.js</code><br>即可开启接口服务<br><img src="/upload/step-01.png" alt="step1" title="开启服务"></p>
-<h2 id="编辑静态页面及用js获取数据显示"><a href="#编辑静态页面及用js获取数据显示" class="headerlink" title="编辑静态页面及用js获取数据显示"></a>编辑静态页面及用js获取数据显示</h2><p>在博客根目录找到themess文件夹，找到自己所需的地方编辑页面代码<br><img src="/upload/step-02.png" alt="step2" title="根目录"><br><img src="/upload/step-03.png" alt="step3" title="source目录"></p>
-<p>###</p>
+<h2 id="编辑静态页面及用js获取数据显示"><a href="#编辑静态页面及用js获取数据显示" class="headerlink" title="编辑静态页面及用js获取数据显示"></a>编辑静态页面及用js获取数据显示</h2><ul>
+<li>在博客根目录找到themess文件夹，找到自己所需的地方编辑页面代码<br><img src="/upload/step-02.png" alt="step2" title="根目录"><br><img src="/upload/step-03.png" alt="step3" title="source目录"></li>
+</ul>
+<blockquote>
+<p>我选择添加在博客侧边栏，HTML代码如下:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;my-music&quot;&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!-- 渐变条 --&gt;</span><br><span class="line">  &lt;span class=&quot;hr&quot;&gt;&lt;/span&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div class=&quot;my-music_title&quot;&gt;</span><br><span class="line">    &lt;p&gt;&lt;i class=&quot;fa fa-headphones&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;最近在听&lt;/p&gt;</span><br><span class="line">    &lt;p class=&quot;reflash-music&quot;&gt;刷新&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div class=&quot;music-player&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;music-player_logo&quot;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;music-player_txt ellipsis&quot;&gt;音乐播放器&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;music-player-control&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;audio src=&quot;&quot; hidden&gt;&lt;/audio&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;ul class=&quot;my-music_list&quot;&gt;</span><br><span class="line">  	&lt;!-- 播放动画 --&gt;</span><br><span class="line">    &lt;div class=&quot;my-music_list-current preloader_1&quot;&gt;</span><br><span class="line">      &lt;span class=&quot;preloader_1-m1&quot;&gt;&lt;/span&gt;</span><br><span class="line">      &lt;span class=&quot;preloader_1-m2&quot;&gt;&lt;/span&gt;</span><br><span class="line">      &lt;span class=&quot;preloader_1-m3&quot;&gt;&lt;/span&gt;</span><br><span class="line">      &lt;span class=&quot;preloader_1-m1&quot;&gt;&lt;/span&gt;</span><br><span class="line">      &lt;span class=&quot;preloader_1-m2&quot;&gt;&lt;/span&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line">  &lt;span class=&quot;hr&quot;&gt;&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>CSS代码如下</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.hr &#123;</span><br><span class="line">	display: block;</span><br><span class="line">    margin: 10px 0 0;</span><br><span class="line">    height: 3px;</span><br><span class="line">    border: none;</span><br><span class="line">    background-color: #ddd;</span><br><span class="line">    box-sizing: border-box;</span><br><span class="line">    background-image: repeating-linear-gradient(-45deg, #69bce1, #69bce1 4px, transparent 4px, transparent 8px);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(使用CSS3 linear-gradient做的一个渐变条，放在播放器上下两端)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">.preloader_1 &#123;</span><br><span class="line">	width: 30px;</span><br><span class="line">	height: 20px;</span><br><span class="line">	margin: 0;</span><br><span class="line">&#125;</span><br><span class="line">.preloader_1 span &#123;</span><br><span class="line">	float: left;</span><br><span class="line">	width: 3px;</span><br><span class="line">	height: 20px;</span><br><span class="line">	background-color: blue;</span><br><span class="line">	margin-left: 2px;</span><br><span class="line">&#125;</span><br><span class="line">.preloader_1-m1 &#123;</span><br><span class="line">	animation: living .8s linear infinite;</span><br><span class="line">	animation-delay: -1.1s;</span><br><span class="line">&#125;</span><br><span class="line">.preloader_1-m2 &#123;</span><br><span class="line">	animation: living .8s linear infinite;</span><br><span class="line">	animation-delay: -1.3s;</span><br><span class="line">&#125;</span><br><span class="line">.preloader_1-m3 &#123;</span><br><span class="line">	animation: living .8s linear infinite;</span><br><span class="line">	animation-delay: -1.6s;</span><br><span class="line">&#125;</span><br><span class="line">@keyframes living &#123;</span><br><span class="line">	0% &#123; transform: scaleY(1); transform-origin: 0 20px; background:#9b59b6; &#125;</span><br><span class="line">	50% &#123; transform: scaleY(.3); transform-origin: 0 20px; background:#69bce1; &#125;</span><br><span class="line">	100% &#123; transform: scaleY(1); transform-origin: 0 20px; background:#9b59b6;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(使用CSS3 animation做一个音乐播放动效)<br>其他css代码比较简单就不放上了。</p>
+<blockquote>
+<p>js 逻辑代码如下:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//使用立即执行函数，可防止音乐播放器的变量及函数名污染全局变量</span><br><span class="line">(function () &#123;</span><br><span class="line"> </span><br><span class="line"> // 音乐播放器局部变量</span><br><span class="line">  var allMusic = [],</span><br><span class="line">      musicLis = [],</span><br><span class="line">      ifPlay = false,</span><br><span class="line">      ids = [],</span><br><span class="line">      currentPlay = 0,</span><br><span class="line">      ramdomCount = 0;</span><br><span class="line"></span><br><span class="line">  getMusicData();</span><br><span class="line"></span><br><span class="line">  // 监听点击</span><br><span class="line">  function spyClick() &#123;</span><br><span class="line">  	...</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 播放音乐</span><br><span class="line">  function playMusic() &#123;</span><br><span class="line">	...</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 获取数据</span><br><span class="line">  function getMusicData() &#123;</span><br><span class="line">	...</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  // 随机显示四首播放音乐</span><br><span class="line">  function showRamdomData() &#123;</span><br><span class="line">	...</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 处理根据多个音乐id获取的音乐url数据顺序不一样的问题</span><br><span class="line">  function resetList(arr, target) &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;)($)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -422,8 +446,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/11/blog-06/" rel="next" title="个人作品--小米9宣传页面">
-                <i class="fa fa-chevron-left"></i> 个人作品--小米9宣传页面
+              <a href="/2019/03/10/blog-05/" rel="next" title="个人作品--美图屋">
+                <i class="fa fa-chevron-left"></i> 个人作品--美图屋
               </a>
             
           </div>
@@ -503,7 +527,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

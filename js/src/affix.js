@@ -177,11 +177,27 @@
 
   function spyClick() {
 
+    // 监听音乐结束
     $("audio").bind('ended', function() {
-      console.log('end');
-      this.load();
-      $(".my-music_list-current").css("visibility", "hidden");
-      $(".music-player-control").css('background', "url(/play.png) 0% 0% / cover");
+      if(currentPlay < ramdomCount + 3) {
+        // 切换当前播放index
+        $(".my-music_list li")[currentPlay - ramdomCount].className = "";
+        currentPlay++;
+        $(".my-music_list li")[currentPlay - ramdomCount].className = "current-play";
+        $("audio")[0].src = musicLis[currentPlay - ramdomCount];
+
+        // 切换播放器信息
+        var img = "url(" + allMusic[currentPlay].pic + ") 0% 0% / cover";
+        // console.log(img);
+        $(".music-player_logo").css('background', img);
+        $(".music-player_txt").html(allMusic[currentPlay].name);
+
+        playMusic();
+      } else {
+        this.load();
+        $(".my-music_list-current").css("visibility", "hidden");
+        $(".music-player-control").css('background', "url(/play.png) 0% 0% / cover");
+      }
     })
 
     // 监听刷新点击
