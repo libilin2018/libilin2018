@@ -232,7 +232,7 @@
   function playMusic() {
 
     var audio= $("audio")[0];
-    console.log(audio.ended);
+    // console.log(audio.paused);
     if (audio.paused) {
       $(".music-player-control").css('background', "url(/load.png) 0% 0% / cover");
       audio.play();
@@ -269,10 +269,10 @@
         showRamdomData();
       },
       error: function(res) {
-        if(res.readyState === 0) {
-          allMusic = defaultAllMusic, ids = defaultIds;
-          showRamdomData();
-        }
+        // if(res.readyState === 0) {
+        //   allMusic = defaultAllMusic, ids = defaultIds;
+        //   showRamdomData();
+        // }
       }
 
     })
@@ -280,7 +280,6 @@
 
   function showRamdomData() {
 
-    musicLis = [];
 
     ramdomCount = Math.floor(Math.random() * (allMusic.length - 4));
     currentPlay = ramdomCount;
@@ -291,6 +290,7 @@
         img = "url(" + allMusic[ramdomCount].pic + ") 0% 0% / cover";
 
     var musicIds = ids.slice(ramdomCount, ramdomCount+4).join(",");
+    // console.log(musicIds)
     // 初始化
     $(".music-player_logo").css('background', img);
     $(".music-player_txt").html(allMusic[ramdomCount].name);
