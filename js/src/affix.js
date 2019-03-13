@@ -162,7 +162,6 @@
 
 
 (function () {
- 
  // 音乐播放器局部变量
   var allMusic = [],
       musicLis = [],
