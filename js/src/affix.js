@@ -196,7 +196,7 @@
       } else {
         this.load();
         $(".my-music_list-current").css("visibility", "hidden");
-        $(".music-player-control").css('background', "url(/play.png) 0% 0% / cover");
+        $(".music-player-control").css('background', "url(/upload/play.png) 0% 0% / cover");
       }
     })
 
@@ -234,15 +234,15 @@
     var audio= $("audio")[0];
     // console.log(audio.paused);
     if (audio.paused) {
-      $(".music-player-control").css('background', "url(/load.png) 0% 0% / cover");
+      $(".music-player-control").css('background', "url(/upload/load.png) 0% 0% / cover");
       audio.play();
       var top = -5 + 20 * (currentPlay - ramdomCount) + 'px';
-      $(".music-player-control").css('background', "url(/pause.png) 0% 0% / cover");
+      $(".music-player-control").css('background', "url(/upload/pause.png) 0% 0% / cover");
       $(".my-music_list-current").css("visibility", "visible");
       $(".my-music_list-current").css("top", top);
     } else {
       audio.pause();
-      $(".music-player-control").css('background', "url(/play.png) 0% 0% / cover");
+      $(".music-player-control").css('background', "url(/upload/play.png) 0% 0% / cover");
       $(".my-music_list-current").css("visibility", "hidden");
     }
   }
@@ -250,7 +250,7 @@
   function getMusicData() {
 
     $.ajax({
-      url: "http://project.sharelab.club:163/user/record?uid=567470691&type=1",
+      url: "https://music.sharelab.club/user/record?uid=567470691&type=1",
       type: "GET",
       success: function (res) {
         if (res.code === 200) {
@@ -309,7 +309,7 @@
     ul.append(newHtml);
 
     $.ajax({
-      url: 'http://project.sharelab.club:163/song/url?id=' +  musicIds,
+      url: 'https://music.sharelab.club/song/url?id=' +  musicIds,
       type: "GET",
       success: function(res) {
         res = res.data;
